@@ -1,6 +1,6 @@
-# [Blog](http://moonblade.github.io/blog)
+# [Blog](https://blog.moonblade.work)
 
-[Blog link](http://moonblade.github.io/blog)
+[Blog link](https://blog.moonblade.work)
 
 Have wanted to write random blog content for a while now, but if I start a wordpress blog, will just forget about its existence and not be able to find it again.
 
