@@ -233,6 +233,10 @@ Update two years later: Neither the controller, nor the indicator, nor the senso
 
 ---
 
+Two more years later, the audiobook library has been moved to separate server, so the rpi is also unused now. Sigh.
+
+---
+
 Total bill of materials - Rs 3864
 
 Total R & D cost - Rs 26008
