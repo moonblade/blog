@@ -1,0 +1,60 @@
+#!/bin/bash
+# Create a new jekyll post with the current date and the given title
+# and print the path to the post file.
+#
+# author: andreasl
+
+post_title=""
+save="false"
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -s|--save)
+    save="true"
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    post_title+=$key
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+[ -z "$post_title" ] && printf 'Error: Script needs a post title.\n' && exit 1
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd $DIR
+repo_dir="$(git rev-parse --show-toplevel)"
+post_date="$(date '+%Y-%m-%d')"
+title_slug="$(printf -- "$post_title" | sed -E 's/[^a-zA-Z0-9]+/-/g' | tr "[:upper:]" "[:lower:]")"
+post_path="${repo_dir}/_posts/${post_date}-${title_slug}.md"
+[ -e "$post_path" ] && printf 'Error: Post exists already.\n' && exit 2
+
+IFS= read -r -d '' front_matter << EOF
+---
+layout: post
+title: "${*}"
+date: ${post_date} 00:00:00 +0530
+tags: bsdiary
+---
+
+EOF
+
+printf -- "${front_matter}" > "${post_path}"
+
+printf -- '%s\n' "${post_path}"
+cd -
+nvim "${post_path}"
+
+if [ "$save" == "true" ]
+then
+  git add .
+  git commit -m "add blog entry"
+  git push
+fi

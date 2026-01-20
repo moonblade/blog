@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Lessons in overengineering | Unfinished Business</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Lessons in overengineering" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I tried to create a project because I was bored. It ended up ballooning past expectations." />
+<meta property="og:description" content="I tried to create a project because I was bored. It ended up ballooning past expectations." />
+<link rel="canonical" href="http://moonblade.github.io/blog/2021/09/11/over-engineering.html" />
+<meta property="og:url" content="http://moonblade.github.io/blog/2021/09/11/over-engineering.html" />
+<meta property="og:site_name" content="Unfinished Business" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-11T18:30:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Lessons in overengineering" />
+<script type="application/ld+json">
+{"description":"I tried to create a project because I was bored. It ended up ballooning past expectations.","headline":"Lessons in overengineering","dateModified":"2021-09-11T18:30:00+00:00","datePublished":"2021-09-11T18:30:00+00:00","url":"http://moonblade.github.io/blog/2021/09/11/over-engineering.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://moonblade.github.io/blog/2021/09/11/over-engineering.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://moonblade.github.io/blog/feed.xml" title="Unfinished Business" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Unfinished Business</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/tags/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Lessons in overengineering</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-09-11T18:30:00+00:00" itemprop="datePublished">Sep 11, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <blockquote>
+  <p>I tried to create a project because I was bored. It ended up ballooning past expectations.</p>
+</blockquote>
+
+<hr />
+
+<p>Preamble: This is a tale of a persons slow descend into insanity with sunk cost fallacy exploited for trivial gains in return.</p>
+
+<p>It all started with a simple idea, having to wait till water is completely gone to turn on the motor like cavemen seems stupid. There has to be a better solution. It was also true that at this point was bitten by the rare “I want to do some electronics shit now” bug.</p>
+
+<p>Anyway, so I went ahead and searched online, had previously looked up a nodemcu, a glorified ic chip with inbuilt wifi so making iot shit with it would be a breeze compared to the labour intensive arduino stuff. I thought about using plain wires for sensing the water level with four levels, but that didn’t sound sexy enough. So I figured I’d use an ultrasonic sensor on the lid of the water tank and find the distance to the water level and thus find the water level percentage. Which appealed to me. So bought a nodemcu and an ultrasonic sensor from amazon and waited for it to arrive. They arrived a week later, but since the electronics bug is rare enough and the last time I had it was years and years ago, I have literally no electronics stuff to do anything with these components, no soldering iron, no solder, breadboard, dot board, or any of the other minor stuff that you end up needing when you embark on such a project. So I went to the electronics store in town and got the starter kit of shit I’d need. I added a rudimentary code to detect the distance to the water level in cm and upload it to a firebase real time database in the nodemcu. Once done, the actual “electronics” part of the project literally involved soldering 4 wires together. But since I was off the  electronics wagon for a while, it proved challenging enough. With my abysmal soldering done, I needed a way to attach this to the underside of the water tank. Since I had no intention of taking electrical wire into a tank filled with water, I needed to provide power to the nodemcu some other way. So went off and bought some electrical wire, a plug and a phone charger. Added new wiring in the terrace to take power from a fan line, rerouting it to be always powered on, and added a plug at the end of it, dangling down above the water tank. At the end of the plug, connected a phone charger and then connected the end of it, a much safer 5V DC current to the nodemcu, and hung the entire thing in a box under the lid by poking holes in the lid and tying it to the bottom.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/120058157-968dba80-c066-11eb-8d4d-26f66873411d.png" alt="Final product tied to the underside of the lid with the charger cable snaking through the side of the lid" /></p>
+
+<p>Final product tied to the underside of the lid with the charger cable snaking through the side of the lid</p>
+
+<hr />
+
+<p>At this point, what should have cost at max 300 bucks is now just shy of 2K. Now that I had the readings from the tank, I needed some way to show it to the user. And since I had enough electrical shenanigans for a bit, figured I’d create an android app for it. So with the next couple of days, created an app, that takes this distance value from the rtdb and calculates a percentage value from it. Added a clever bit of code in there so that it would automatically change the maximum and minimum values so that I didn’t have to find the distances when it was full or empty, it would just find it out and update it automatically. So with the app installed I can now check what the level of water is and whether or not I need to turn on the motor.</p>
+
+<hr />
+
+<p>But this still presented the problem that it only gave the information when the app was opened, the info wasn’t there on your face ready to go when you need it. So I tried creating a widget that would show the percentage. But I was new to widget creation and there was a ton of bugs in it and it just WOULD NOT update properly, even if the app had the data, the widget just would not update. It drove me crazy and I just let it go at this point. So now I have an app and a physical device that reads the water level.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/110064173-9b5a0f80-7d92-11eb-9c23-230dae3abe87.jpg" alt="Screenshot of the app" /></p>
+
+<p>Screenshot of the app</p>
+
+<hr />
+
+<p>I went to blore to stay, and since I thought I’d stay there for an extended period of time, I took my electronics kit with me as well. And I figured since there wasn’t an in your face display of the water level I should create that as well. So I ordered another nodemcu to blore and bought an 8x8 led matrix as a display unit intending to create an always on display to show the percentage. Once that arrived, I bummed a small breadboard from my roommate. (which is used to prototype electronics stuff without soldering) and created a display unit which would calculate and display the percentage on the led matrix. It had two modes of display with level view and percentage view. Levels view was eventually never used and percentage view was set all the time. So I made a finished product of this by taping the breadboard to the top of a charger (from my speakers) and connecting it to the nodemcu on the breadboard with the display on top. Since this needed a place to plug into, bought a multi plug so that it could be plugged into the kitchen plug. And when I came back (I thought I would be back for only a week, spoilers, I wasn’t)This additional feature has cost me another 800 bucks. With the total hovering at 2.5 K.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/110785068-83055b80-8290-11eb-8b11-7795970e5736.jpg" alt="Testing the display" /></p>
+
+<p>Testing the display</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/120057833-f9318700-c063-11eb-82da-114e88e869ca.png" alt="Installed in kitchen" /></p>
+
+<p>Installed in kitchen</p>
+
+<hr />
+
+<p>I was trying to get more automation stuff done in my home, and had ordered smart switches and smart controllers for automating my room. Got into a spending spree and ended up buying a raspberry pi as well along with it thinking I’d find some uses for an always on server. The top of the line pi and its accessories cost 13.5 k. Sigh, impulse buying sometimes doesn’t work out that much. So I setup the rpi with raspberry os at first but ran into trouble with it, so had to redo everything I did with ubuntu and then later a downgraded version of ubuntu since the other one had issues as well. All told that sucked up a week or more of my time in pointless configurations. Once configured all I had running on it was a pihole and using an 8k machine to run pihole is like using a machine gun as a walking stick. So filled with regret, I looked around for other ways I could use this, trying out google drive alternatives, google assistant clones, torrent seeders and others before thinking that I should also use this to control my motor, so that I didn’t need to turn it on and off manually. There were other debugging issues that occured that made me buy an hdmi cable for the pi as well, debugging shit based on guesswork is way harder.</p>
+
+<hr />
+
+<p>The led matrix seemed to have issues at this point, so bought a replacement, but lo and behold the moment the new one arrived, the old one starts working fine. It was afraid it would be replaced. I’m onto you led matrix. I’m onto you.</p>
+
+<hr />
+
+<p>I didn’t attempt motor control before this because its not a simple 32 A switch, oh no, its the push on push off switch that people use for outboard motors so that in case current comes on, motor doesn’t start automatically. So was terrified of messing with it originally. But eventually overcame it and figured whats the worst that could happen. But now my electronics stuff is in blore and I’m stuck in calicut. So if I decide to do this, the upfront cost would rise again. But I already sunk 8k on a pi, whats another 1k, so said fuck it and went about buying the shit I needed.</p>
+
+<p>While the stuff was arriving, I wrote the code for the raspberry pi, which would check the water level and every time the level changes, would instruct the motor to turn on or off, and the node mcu code so that motor would turn on or off based on this command.</p>
+
+<p>This time around, I bought a tinier version of the nodemcu called a wemos d1 mini. I can’t buy the starting kit from the nearby store because its lockdown now so had to buy everything from amazon at double or triple cost. I wanted to get rid of the charger cable shenanigans, so I bought a miniature ac to dc convertor as well so that my thing would work pretty much directly off of ac now. Then I accidentally bought a 12V 4 channel relay, and returned it and bought a 5v 4 channel relay instead, some connectors to connect it to ac and the starter stuff from last time at higher cost. I had also inquired about printing my own pcb and 3d printing its housing, but it was far too costly (which in retrospect seems laughable) and didn’t entertain it. Had ended up building my pcb design in two different software and tried test versions on normal paper as well. Anywho, built the dot board and connected the 4 channel relay with 10 ampere rating, connected up all the circuitry required (unknowingly connecting one wire so that motor could never be turned off, eventually realizing it and correcting) and tested it, and gloriously it worked…</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132271024-899ab56e-ccfe-4df7-83b6-5eef81ba003f.png" alt="assembly" /></p>
+
+<p>assembly</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132271150-082d88fd-c467-496e-9a31-b242ba655d22.png" alt="assembled into an old box I found lying around" /></p>
+
+<p>assembled into an old box I found lying around</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132271170-b57178d9-2abc-46dd-aec0-80a86678559c.png" alt="wiring it into the motor switch" /></p>
+
+<p>wiring it into the motor switch</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132271193-f7c9b6ee-e5ed-45c3-b3cf-0c57d9a6828d.png" alt="finished product" /></p>
+
+<p>finished product</p>
+
+<p>….for one day. The relay rated for 10A, drew 15A of current through it and promptly died. So ended up with a crappy looking paperweight on the motor switch doing nothing.</p>
+
+<hr />
+
+<p>With that not working, decided to concentrate on raspberry code for a while, wrote other code to monitor the water level and show it as a time series graph, all in the efforts of justifying buying the raspberry. Trying to get it on the internet, failing on it due to not getting static ip from the isp. Trying other shit on the rpi like pi tunnel and ngrok and not liking any of those.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132270512-7c44fb35-45ae-483a-b195-0e09f2d6994c.png" alt="https://user-images.githubusercontent.com/9362269/132270512-7c44fb35-45ae-483a-b195-0e09f2d6994c.png" /></p>
+
+<hr />
+
+<p>There was something wrong with the display unit, I had went on vacation for a week, and display wasn’t moving from 11 percent. Apparently the rpi had restarted but the processes didn’t restart. So wrote new code in the display unit such that if the rpi failed, display unit would just start calculating percentages on its own and display that. Why does it ever need rpi you ask? Well rpi does a more elaborate calculation and removes any outlier values. The sensor isn’t perfect, sometimes it gives wrong readings where the percentage is much higher than it should be, the rpi fixes all these values with clever coding, by storing the last 10 values and removing any values that are more than 2 standard deviations away from this series. So that most of the scattering gets fixed. But if rpi is down, the display can still show the current data, albeit a bit more flaky data.</p>
+
+<hr />
+
+<p>Eventually figured I needed to do something about the controller, so went ahead and got much higher rated 30A relays, earlier I had used 3 relays from the 4 channel one, somehow I got the notion that I could do the same thing with 2 relays, of course I couldn’t. No clue why I thought I would be able to build 2 independant switches from one. I tried and got a motor that never turned off. So passed on it and ordered another relay. Also this time around, I made it smarter so that the motor state was measured externally and not internally so that it would know even if a human turned it on and would be able to turn it off, unlike the previous iteration where it would only turn it off if it was turned on by itself. This required some rejiggering of the rpi code, so did that first, then wrote the code for the new wemos d1 chip which would take this into consideration as well.</p>
+
+<p>When the third relay arrived, connected everything up…. and it wasn’t working. I tried to reflash the chip with new code, but the chip wasn’t working now either. Strange. So I bought new cables thinking maybe the cable had some fault? nope, chip still not working. This would normally mean a wiring issue, but I was pretty sure the internal wiring of the board was fine, I retraced it and confirmed that all the internal wirings were correct. Odd. But it seemed to be turning off the motor correctly. The heck. Anyway, since the chip was shot, I ordered a couple of new chips, figuring its good to have a spare.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132272520-fc4b3dfb-e939-48e7-a574-6e1d59bea94a.png" alt="new circuit" /></p>
+
+<p>new circuit</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132272558-3e547a7d-a286-49df-a876-f6f8b5c5a6c2.png" alt="finished product in a shinier box" /></p>
+
+<p>finished product in a shinier box</p>
+
+<hr />
+
+<p>While I was debugging what could have went wrong with the chip, trying to resuscitate the chip, the water level sensor decided to go for a swim. The thread broke and the whole box took a dip in water. Sigh. Water was also condensing onto it and the swim was just the straw that broke the camels back. It would have failed eventually anyway.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132033304-b6c784d4-07c3-428f-9286-d6dd2637c560.png" alt="water damage after 8 months" /></p>
+
+<p>water damage after 8 months</p>
+
+<p>Since I couldn’t fix motor controller before the sensor was fixed, ordered yet another nodemcu and a waterproof ultrasonic sensor. Also went to the local store and bought the required items for it as well. I tried my hand at hand crafting pcb, but for the life of me could not drill holes in straight lines with the hand drill. So for the second time, let go of the prospect of custom pcbs, and used dot board. The waterproof sensor was a piece of shit, giving invalid readings and readings that were way way off. Thankfully with everything breaking around me, I had thought of this and bought a normal ultrasonic sensor as well. So used that and created a new board. This time around made it so that parts would be swappable. Also added an ac to dc convertor on it, figuring that I’d keep this on top of the lid instead of on the bottom.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132161640-8e9af23f-c296-4ebe-bd39-4643f38173a5.png" alt="old vs new" /></p>
+
+<p>old vs new</p>
+
+<p>Took off the lid from the tank, and spent some time trying to drill holes in it, realizing that the effort was futile, brought it down and tried making circular holes with safety pin held with pliers over the stove. Got tired of bending over for so long and bought candles so that I could sit and do it in peace. After an hour of work, had a couple of holes through which the detector of the ultrasonic sensor could be pushed through. So now I had the new version of the lid, which just the detector on the underside and everything else on top. hopefully this lasts longer.</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132161556-d9242ffb-65bf-441a-befc-98c5a41b7320.png" alt="underside of lid" /></p>
+
+<p>underside of lid</p>
+
+<p><img src="https://user-images.githubusercontent.com/9362269/132161731-35425384-af4b-4f77-8e5a-77ded42fbf48.png" alt="topside connected up and insulated for waterproofing" /></p>
+
+<p>topside connected up and insulated for waterproofing</p>
+
+<p>Connected up the v2 version of the sensor, the ac current on top of the lid is a bit fear inducing but nowhere near as bad as it could be if it was on bottom. Anyway, this worked perfectly. And the sensor problem was fixed for now.</p>
+
+<hr />
+
+<p>Now for the motor controller. After the new chips arrived, flashed them with new code, and then decided to do another round of testing before inserting it, and found out that the ac to dc convertors were connected up wrong. The internal wiring was right, but the wires connected to the outside terminals were switched. GAH. swapped it around, inserted the new chip and the motor controller started working, when I gave it a command manually, but when the water level went down it didn’t turn on automatically. strange. And it was also overflowing, not turning it off when full either. The heck.</p>
+
+<p>After a day of debugging, realized that I had a setting that turned off automatic control and that setting was enabled. 🤦‍♂️. Anyway, disabled that and it started working correctly. Finally.</p>
+
+<hr />
+
+<p>I had originally attached the raspberry pi behind the television with double sided tape, but the tape wasn’t strong enough and the rapsberry pi was now just dangling from its network cable underneath the tv. This was offputting to me, so I poked a couple of holes in its case with a hot iron, drilled a couple of holes behind the tv and then attached the case to the wall with screws so that it would sit tight. And assembled back the raspberry pi. aaaaand it wouldn’t boot.</p>
+
+<p>While disassembling, the sd card, which was overheated got struck and got a hairline crack, now the 256 gb storage says it only ever had 32 mb. Tried everything to fix it eventually realizing that its a hardware error that can’t be fixed.</p>
+
+<p><img src="https://i.imgur.com/KfYctj0.png" alt="a tiny crack to ruin an sd card" /></p>
+
+<p>a tiny crack to ruin an sd card</p>
+
+<p>Ordered another 64gb drive and waiting for it to arrive. There were a ton of fiddly bits within the rpi that I had setup. Now would need to do ALL of those over again. Sigh.</p>
+
+<p>All told, this project has cost me close to 25k and 8 months, and will cost me more as I add an ssd on the rpi so that this sd card fiasco can’t happen again.</p>
+
+<p>I know I should write code in the motor controller to cut out the rpi, in case of failures, I already did it for the indicator, but I’m lazy at this point to do that. Maybe in the future.</p>
+
+<hr />
+
+<p>While I was waiting for the sd card to arrive, I ran the motor controller code on my laptop to auto control the motor, did not like this code running in my lap. I also noticed that the indicator led was not functioning correctly. I took a closer look and realized that the code for it, had some run time issues and was not switching over to direct mode (ie calculate percentage itself so that even if rpi is down it would work). So spent some time fixing it. After that was fixed figured I should probably go ahead and do the same for motor controller as well and did the bloody obvious thing of fixing that up as well. There was no need for the rpi to be involved in this loop whatsoever. Yes it makes it a bit smarter and it makes it easier for me to write code, but its not necessary. Its just overengineering and another point of failure. But now it gets switched over and cut off from the loop if it ever goes down. So theres that.</p>
+
+<p>Haven’t tested the newest code. Hopefully it runs well and doesn’t cause any major issues.</p>
+
+<hr />
+
+<p>It just had its first run, and it worked, surprising that something I wrote compiled on the first try and worked as intended. Nice</p>
+
+<hr />
+
+<p>Well, would you look at that, it started misbehaving and turning on the motor at random times and not turning it off. I think the motor controller code is fine, but the water level sensor is broken again. Gah.</p>
+
+<hr />
+
+<p>The sd card came, I installed ubuntu on it and inserted it in the rpi, aaaaand nothing. It just didn’t start. I’ll debug it later. For now found something else shiny to work on.</p>
+
+<hr />
+
+<p>The reason I had till now made by iot devices as dumb as possible and then provided smartness externally via rpi or other servers is because it was a hassle to update the nodemcu devices. To update the device I’d need to stop its functioning, plug it into my pc and then manually push an update it. where as I could update the rpi code easily by sshing into it.</p>
+
+<p>This is 2021, There has got to be a better solution than that, and one that would allow me to cut the rpi entirely out of the loop.</p>
+
+<p>So, with the spirit of over engineering in mind, ended up creating a new repo and a new site in firebase, which lets me upload the compiled binaries. I present to you - <a href="https://water-level-indicator-a555e.web.app/upload">IOT Auto Updater</a>, (<a href="https://github.com/moonblade/auto-update-iot-devices#readme">repo</a>). After a lot of frustrating road blocks and dead ends, eventually got this to work. Now I can compile a binary in my laptop and upload it here and the iot device will automatically check for updates and pull the newest update from firebase if the upload was done. With this I can pretty much go crazy on the logic in the devices since now I have a (ostensibly) foolproof update mechanism in place for when things go pear shaped. Now I JUST need to update all the devices MANUALLY once to be auto update compatible. At least this will be a prevelant feature in any future iot projects I do.</p>
+
+<p><img src="https://i.imgur.com/7UoZkA2.png" alt="" /></p>
+
+<hr />
+
+<p>Now that I have an auto updater setup, updated code for the sensor to get multiple readings, find the mode of those readings approximated to the nearest 5cm and pick that. But sensor is already broken from water damage from the high humidity and just gives random values. So turned off the motor controller, put up a frowny face on the indicator and ordered new sensors, a waterproof one and more standard ones. Will see if I’m able to use the waterproof one since it was broken last time, and doesn’t have the range requirements I need.</p>
+
+<p><img src="https://i.imgur.com/d1s3v2l.png" alt="" /></p>
+
+<hr />
+
+<p>I’m way too trigger happy with buying shit, I guess in the grand scheme of things, happiness from the journey matters and if that gives a return on investment in regards to the cost, its fine. With that in mind. LASERS!!!. So I was thinking, for a long term solution, I’d have to downgrade to standard wires to read percentages like cavemen. But no, there is another alternative. lasers. Specifically a laser tof sensor. Something thats small, is already sealed. And can be covered with tape if needed, since light passes through tape, unlike ultrasound…….Huh, I haven’t actually tested that last part, I should do that first.</p>
+
+<p>Anyway, I’ll probably order a laser tof sensor. And I’ll experiment on that to see if thats any good. the options are tof10120 or vl53l0x</p>
+
+<p><img src="https://i.imgur.com/7WBvUWv.png" alt="" /></p>
+
+<p><img src="https://i.imgur.com/z2tPa1d.png" alt="" /></p>
+
+<hr />
+
+<p>20th sep. Got the ultrasonic sensors and the lidar sensor. I’m gonna try and mount the lidar sensor on some sort of mount higher than the hole so that water can’t easily get to it, also make some kind of insulating protection on it, Assuming I can put cello tape on it without interfering with its function. Will have to check. The thing is tiny, like “sneeze and its gone” tiny. We’re pretty ffing good at making semi conductors small, aren’t we.</p>
+
+<p><img src="https://i.imgur.com/Jj0DmEl.png" alt="here it is at the end of my finger." /></p>
+
+<p>here it is at the end of my finger.</p>
+
+<hr />
+
+<p>25th sep - Made a prototype distance sensor on the breadboard with the lidar sensor. After a couple of wrong turns got the code to work. Went away, came back a couple of hours later and the device no longer functions. No wonder software people hate working on hardware, there is zero repeatability. This project seems custom made to turn me insane. After some intense debugging. Realised that the issue is with the hardware of the chip, It just doesn’t work consistently, So assume the thing is broken and order another. Really should have paid attention to the chip on the chip. Ordered a couple of replacement lidars.</p>
+
+<hr />
+
+<p>Since there was work taking place on the water tanks, and the bathrooms, was delayed on the project for a couple of weeks.</p>
+
+<hr />
+
+<p>Before the lidars arrived, I figured I’d give the waterproof sensor another try, and lo and behold this one started working fine (although I figured out an issue with my connections in which software HIGH and LOW wasn’t really giving out a potential difference of 5v, and this might have been why the last one wasn’t working either), So went ahead, did some reliability testing on it on a breadboard and then replaced the existing module with this one. Aaand it wasn’t working. Finding out that with the ingenious replaceable connections I’d made, the dependance on good female to female connectors were present and the ones I had were crap. So ripped it out and soldered on the connections so that this issue wouldn’t happen again.</p>
+
+<p>I’d originally planned to use the overflow pipe for measuring. By inserting the sensor into it, but it turned out to be an echo chamber and always gave the minimum reading. So ended up removing it from there, sticking a new pipe on the tank and putting it inside that instead.</p>
+
+<p><img src="https://i.imgur.com/jN01Y4P.png" alt="sensor dropped inside overflow pipe" /></p>
+
+<p>sensor dropped inside overflow pipe</p>
+
+<p><img src="https://i.imgur.com/jaZw063.png" alt="Moved it to the new pipe instead" /></p>
+
+<p>Moved it to the new pipe instead</p>
+
+<hr />
+
+<p>With this, the measurements were correct, and was kept like this for two three days to see how consistent/error prone the readings were. After a week (where I’d setup the rpi again and dusted off the old grafana dashboard to point to the new values) of monitoring, and realizing that it seems as good as it could be for now, decided to finally open up automatic motor control. Turned it on and it worked like a charm. Will need to continue monitoring for a while, but I’m optimistically calling this project done, finally.</p>
+
+<hr />
+
+<p>Update two years later: Neither the controller, nor the indicator, nor the sensor work now. So ya, that was a complete waste of time. Though I’m using the rpi as an audiobook library, so at least thats fine.</p>
+
+<hr />
+
+<p>Two more years later, the audiobook library has been moved to separate server, so the rpi is also unused now. Sigh.</p>
+
+<hr />
+
+<p>Total bill of materials - Rs 3864</p>
+
+<p>Total R &amp; D cost - Rs 26008</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Cost</th>
+      <th>Date</th>
+      <th>Final Component</th>
+      <th>Final Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nodemcu</td>
+      <td>384</td>
+      <td>January 23, 2021</td>
+      <td>Yes</td>
+      <td>384</td>
+    </tr>
+    <tr>
+      <td>Ultrasonic sensor</td>
+      <td>169</td>
+      <td>January 23, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Electronics basics kit</td>
+      <td>840</td>
+      <td>February 8, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Electrical wire and plug</td>
+      <td>130</td>
+      <td>February 12, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Charger</td>
+      <td>250</td>
+      <td>February 12, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Nodemcu</td>
+      <td>399</td>
+      <td>March 6, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>8x8 LED Matrix Display</td>
+      <td>191</td>
+      <td>March 7, 2021</td>
+      <td>Yes</td>
+      <td>191</td>
+    </tr>
+    <tr>
+      <td>Multi plug</td>
+      <td>204</td>
+      <td>March 12, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi</td>
+      <td>8111</td>
+      <td>June 22, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi Case</td>
+      <td>330</td>
+      <td>June 22, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Sandisk 256 GB Card</td>
+      <td>3792</td>
+      <td>June 22, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>SD Card Reader</td>
+      <td>634</td>
+      <td>June 22, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi Case Fan</td>
+      <td>565</td>
+      <td>June 29, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>LED Matrix</td>
+      <td>219</td>
+      <td>July 5, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Raspberry Pi Micro HDMI Cable</td>
+      <td>299</td>
+      <td>July 22, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>AC to DC Convertor</td>
+      <td>375</td>
+      <td>July 17, 2021</td>
+      <td>Yes</td>
+      <td>375</td>
+    </tr>
+    <tr>
+      <td>Wemos D1 Mini</td>
+      <td>368</td>
+      <td>July 17, 2021</td>
+      <td>Yes</td>
+      <td>368</td>
+    </tr>
+    <tr>
+      <td>Terminal Connectors</td>
+      <td>198</td>
+      <td>July 19, 2021</td>
+      <td>Yes</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <td>Single Core Wires</td>
+      <td>89</td>
+      <td>July 19, 2021</td>
+      <td>Yes</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <td>Dot Boards</td>
+      <td>51</td>
+      <td>July 19, 2021</td>
+      <td>Yes</td>
+      <td>51</td>
+    </tr>
+    <tr>
+      <td>Jumper Cables</td>
+      <td>115</td>
+      <td>July 19, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Breadboard</td>
+      <td>183</td>
+      <td>July 19, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Soldering Kit</td>
+      <td>247</td>
+      <td>July 19, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4 Channel 5V 10A Relay</td>
+      <td>330</td>
+      <td>July 19, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Multimeter</td>
+      <td>240</td>
+      <td>July 19, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Nodemcu</td>
+      <td>394</td>
+      <td>July 23, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Micro USB Cable</td>
+      <td>199</td>
+      <td>August 9, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>5V 30A Relay x 2</td>
+      <td>686</td>
+      <td>August 10, 2021</td>
+      <td>Yes</td>
+      <td>686</td>
+    </tr>
+    <tr>
+      <td>AC to DC Convertor x 2</td>
+      <td>300</td>
+      <td>August 10, 2021</td>
+      <td>Yes</td>
+      <td>300</td>
+    </tr>
+    <tr>
+      <td>Dot Board, Copper Clad, Sensor, etc.</td>
+      <td>790</td>
+      <td>August 10, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>5V 30A Relay</td>
+      <td>343</td>
+      <td>August 18, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Wemos D1 Mini x 2</td>
+      <td>856</td>
+      <td>August 27, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Nodemcu</td>
+      <td>397</td>
+      <td>September 1, 2021</td>
+      <td>Yes</td>
+      <td>397</td>
+    </tr>
+    <tr>
+      <td>Buzzer</td>
+      <td>169</td>
+      <td>September 1, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Candles</td>
+      <td>10</td>
+      <td>September 4, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>SD Card 64 GB</td>
+      <td>633</td>
+      <td>September 12, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Waterproof Ultrasonic + 3x Regular</td>
+      <td>825</td>
+      <td>September 17, 2021</td>
+      <td>Yes</td>
+      <td>825</td>
+    </tr>
+    <tr>
+      <td>Ultrasonic Sensor x 3</td>
+      <td>225</td>
+      <td>September 17, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>VL53L0X</td>
+      <td>498</td>
+      <td>September 17, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>VL53L0X x 2</td>
+      <td>970</td>
+      <td>September 26, 2021</td>
+      <td>No</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div><a class="u-url" href="/blog/2021/09/11/over-engineering.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Unfinished Business</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Unfinished Business</li><li><a class="u-email" href="mailto:moonblade168@gmail.com">moonblade168@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/moonblade"><svg class="svg-icon"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">moonblade</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Random thoughts floating around bumping into stuff I care about, so instead puke them out into a place where it doesn&#39;t affect the other stuff.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
